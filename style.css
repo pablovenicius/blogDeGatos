@@ -1,0 +1,208 @@
+*{
+  margin: 0;
+  padding: 0;
+  /*  box-sizing é a largura da caixa border-box vai calcular de borda a borda */
+  box-sizing: border-box;
+}
+:root{
+  --title-primary:hsl(240, 6%, 13%);
+  --brand-primary:hsl(195, 46%, 40%);
+  --text-primary:hsl(240, 5%, 7%);
+  --text-base:1rem;
+  --text-sm:0.875rem;
+}
+html, input{
+  font: 400 var(--text-base)/160% "mulish", sans-serif;
+  /* o de cima é o mesmo que fazer  
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 160%;
+  font-family:'Courier New', Courier, monospace;*/
+  
+}
+h1,h2{
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 160%;
+  color: var(--color-primary);
+}
+h3{
+  font-size: 1.125rem;
+  line-height: 100%;
+}
+  img{
+    /*para a imagem respeitar as caixas em que ele esta dentro */
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 300ms;
+  }
+  img:hover {
+  scale: 1.1;
+}
+/*  classe ultilitaria para aplicar quando quiser no meu documento*/
+.text-sm{
+  font-size: var(--text-sm);
+}
+.container{
+    padding-inline: 1.25rem;
+    max-width: calc(24rem + (1.25rem * 2));
+    margin-inline:auto;
+
+}
+header{
+  background: var(--brand-primary);
+  padding: 0.8rem 1.75rem;
+}
+header .container{
+  /* largura maxima */
+  max-width: 23.375rem;
+  /* margem do eixo x */
+  display: flex;
+  margin-inline: auto;
+  gap: 1.625rem;
+  justify-content: center;
+  align-items: center;
+}
+header a{
+  /* altura da caixa que um conteudo pertence */
+  line-height: 0;
+}
+
+header img:last-child{
+  width: 2.5rem;
+  height: 2.5rem;
+}
+ 
+
+header form input{
+  background: rgb(255 255 255 / 0.2);
+  border: none;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  line-height: 100%;
+  /* para quando digitar sair branco */
+  color: white;
+
+}
+header form input::placeholder{
+  color: white;
+}
+
+main h1{
+  margin-top: 1rem;
+
+}
+main p{
+  margin-top: 1rem;
+}
+main .buttons{
+  margin-top: 0.5rem;
+}
+
+button{
+  /* tira tudo que esta no button e deixa a imagem limpa */
+  all: unset;
+  transition: all 300ms;
+}
+button:hover{
+  transform: scale(1.1) rotate(10deg);
+}
+/* aside */
+aside{
+  
+
+  margin-top: 2rem;
+}
+  aside section{
+    margin-top: 1rem;
+    display: grid;
+    gap: 2rem;
+  }
+  section article{
+    display: grid;
+    grid-template-columns: 9.375rem 1fr;
+    gap: 1rem;
+
+  }
+  section article p{
+    margin-top: 0.75rem;
+  }
+  footer{
+    background-color: var(--brand-primary);
+    color: white;
+    text-align: center;
+    padding-block: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  /*  80rem é 1280/16 que sao os pixels  */
+@media (width > 80rem){
+  img {
+    border-radius: 5px;
+  }
+#app{
+  display: grid;
+  grid-template-areas: 
+  "header header"
+  "main aside"
+  "footer footer";
+  gap: 2.5rem 2rem;
+}
+header .container,
+.container{
+  max-width: initial;
+  padding: initial;
+  margin: initial;
+}
+header{
+  grid-area: header;
+}
+header .container{
+  max-width: 76rem;
+  margin-inline: auto;
+}
+header form{
+/* para ele ficar na largura toda da tela */
+flex: 1;
+}
+header form input{
+  /* para a barra de pesquisa pegar toda a tela */
+  width: 100%;
+  
+}
+main{
+  grid-area: main;
+}
+main .container{
+  max-width: 50rem;
+}
+aside{
+  grid-area: aside;
+}
+aside .container{
+  max-width: 24rem;
+}
+footer{
+  grid-area: footer;
+}
+}
+header {
+  animation: fromtop 600ms 400ms backwards;
+}
+main, aside{
+  animation: frombottom 800ms 300ms backwards;
+}
+
+@keyframes fromtop{
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+@keyframes frombottom{
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+}
